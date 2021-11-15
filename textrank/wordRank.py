@@ -1,7 +1,7 @@
 '''
 author: 0x404
 Date: 2021-11-15 12:09:52
-LastEditTime: 2021-11-15 13:49:06
+LastEditTime: 2021-11-15 14:36:08
 Description: 
 '''
 import jieba
@@ -47,6 +47,8 @@ def generateTrans(wordList, word2Id, windowLen = 3):
 
     for i in range(n):
         sumt = sum(trans[i])
+        if sumt == 0:
+            continue
         for j in range(n):
             trans[i][j] /= sumt
     
