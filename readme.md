@@ -20,7 +20,7 @@
 
 ## 参考资料来源
 
-* 参考来源来源：https://github.com/goto456/stopwords
+* 停用词表来源：https://github.com/goto456/stopwords
 * 清华数据集来源：http://thuctc.thunlp.org/
 * 清华新闻数据集来源：https://thunlp.oss-cn-qingdao.aliyuncs.com/THUCNews.zip
 
