@@ -1,7 +1,7 @@
 '''
 author: 0x404
 Date: 2021-11-15 12:09:52
-LastEditTime: 2021-11-15 13:33:12
+LastEditTime: 2021-11-15 13:49:06
 Description: 
 '''
 import jieba
@@ -60,12 +60,14 @@ def calculateRank(trans, iteration = 1000):
     :return: rank向量
     """
     n = len(trans)
+    d = 0.85
     rank = [ 1 / n for _ in range(n)]
     for ite in range(iteration):
         rank_n = [ 0.0 for _ in range(n)]
         for i in range(n):
             for j in range(n):
                 rank_n[i] += trans[j][i] * rank[j]
+            rank_n[i] = 1 - d + d * rank_n[i]
         rank = rank_n
         
         norm = math.sqrt(sum( x * x for x in rank))
