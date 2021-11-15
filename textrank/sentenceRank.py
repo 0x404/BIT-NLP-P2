@@ -2,13 +2,14 @@
 '''
 author: 0x404
 Date: 2021-11-15 14:07:42
-LastEditTime: 2021-11-15 14:46:37
+LastEditTime: 2021-11-15 16:08:48
 Description: 
 '''
 import re
 import jieba
 import math
-import dataLoader
+from util import dataLoader
+from util.trieTree import Trie
 
 def generateMap(sentList):
     """
@@ -103,12 +104,13 @@ def sentenceRank(paragraph, limit = 3):
 
     for i in range(len(sentences)):
         sentences[i] = [word for word in jieba.cut(sentences[i])]
-    stopWords = dataLoader.loadStopWords("./cn_stopwords.txt")  # 加载停用词
+    stopWords = dataLoader.loadStopWords("./data/cn_stopwords.txt")  # 加载停用词
+    trie = Trie(stopWords)
     newSent = []
     for i in range(len(sentences)):
         sent = []
         for w in sentences[i]:
-            if w not in stopWords:
+            if trie.isExist(w) == False:
                 sent.append(w)
         newSent.append(sent)
     
