@@ -12,6 +12,7 @@ def index(request):
 
 def extract(request):
     respone = {'status': True, 'message': None, 'keyword': None, 'pdigest': None}
+
     try:
         input_psg = request.POST.get('input_passage')
         handle_method = request.POST.get('handle_method')
@@ -29,10 +30,11 @@ def extract(request):
         respone['keyword'] = keyword
         respone['pdigest'] = pdigest
 
-    except Exception as e:
 
+    except Exception as e:
+        print(e)
         respone['status'] = False
-        respone['message'] = '用户输入错误'
+        respone['message'] = '获取结果失败'
 
     result = json.dumps(respone, ensure_ascii=False)
     return HttpResponse(result)
