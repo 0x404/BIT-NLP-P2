@@ -5,21 +5,32 @@ BIT自然语言理解初步大作业2
 ## 文件结构
 
 * textrank
-
-  * cn_stopwords.txt	#停用词表
+  * data
+    * cn_stopwords.txt    # 中文停用词表
+  * util
+    * dataLoader    # 加载数据
+    * trieTree    # 字典树
   * wordRank    # 利用textrank算法计算关键词
   * sentenceRank    # 利用textrank算法计算关键句
-  * dataLoader    # 加载数据
-  
 
+* django-online    # django部署
+  * keyword_extracttion
+    * textrank
+    * settings
+    * views
+    * urls
+    * wsgi
+
+  * static
+  * templates
   
 
 ## 任务
 
 - [x] textRank计算关键词
 - [x] textRank计算关键句
-- [ ] web前端HTML界面
-- [ ] Django后端
+- [x] web前端HTML界面
+- [x] Django后端
 - [ ] transformer
 
 ## 待做
