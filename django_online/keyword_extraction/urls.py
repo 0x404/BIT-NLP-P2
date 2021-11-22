@@ -19,7 +19,7 @@ from keyword_extraction import views
 
 urlpatterns = [
     re_path('admin/', admin.site.urls),
-    re_path('', views.index),
-    re_path(r'^extract/', views.extract)
+    re_path('^$', views.index),
+    re_path('^extract/', views.extract)
 
 ]
