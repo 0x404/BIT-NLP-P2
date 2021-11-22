@@ -1,3 +1,9 @@
+'''
+author: 0x404
+Date: 2021-11-22 16:21:17
+LastEditTime: 2021-11-22 21:49:07
+Description: 
+'''
 """keyword_extraction URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,7 +25,7 @@ from keyword_extraction import views
 
 urlpatterns = [
     re_path('admin/', admin.site.urls),
-    re_path('', views.index),
+    re_path(r'^$', views.index),
     re_path(r'^extract/', views.extract)
 
 ]
