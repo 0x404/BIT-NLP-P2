@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.css"/>
+
+
+    <style type="text/css">
+          body {
+            padding: 0;
+            margin: 0;
+          }
+
+        header {
+            width: 100%;
+            height: 60px;
+            background-color: rgb(51,122,183);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            height: 60px;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #ffffff;
+            font-size: 200%;
+            line-height: 60px;
+        }
+
+        .welcome {
+            color: white;
+            font-size: medium;
+            line-height: 60px;
+        }
+
+        .main-window {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            min-width: 360px;
+        }
+
+        .left-section{
+            width: 50%;
+            min-width: 400px;
+            height: 600px;
+            border: rgb(232,240,251) solid 2px;
+        }
+        .right-section {
+            min-width: 400px;
+            width: 50%;
+            height: 600px;
+            border: rgb(232,240,251) solid 2px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="left-wrap">
+            <div class="logo">K&D</div>
+        </div>
+
+        <div class="right-wrap">
+            <div class="welcome">亲爱的用户，欢迎您！</div>
+        </div>
+    </div>
+</header>
+
+<div class="main-window">
+    <div id="input_area" class="left-section">
+        <form class="form-horizontal">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">编辑</h4>
+              </div>
+
+            <div class="modal-body">
+                  <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">文章</label>
+                    <div class="col-sm-10">
+{#                      <input type="text" class="form-control" id="input_passage" name="input_passage" placeholder="请在此处输出要处理的文章">#}
+                      <textarea id="input_passage" name="input_passage" placeholder="请在此处输出要处理的文章" rows="16" style="min-width: 95%; max-width: 95%; min-height: 330px; max-height: 330px; margin: 5px auto"></textarea>
+                    </div>
+                  </div>
+                 <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">方式</label>
+                    <div class="col-sm-10">
+                         <label class="radio-inline">
+                            <input type="radio"   name="handle_method"  value="text_rank"> TextRank
+                         </label>
+                         <label class="radio-inline">
+                              <input type="radio"   name="handle_method" value="transformer"> transformer
+                         </label>
+                    </div>
+                 </div>
+            </div>
+
+            <div class="modal-footer">
+                <span id="errorMag" style="color:red;"> </span>
+                <button type="button" class="btn btn-default" id="clear_text">清空</button>
+                <button type="button" class="btn btn-primary" id="btnEditSave">提交</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="output_area" class="right-section">
+        <div style="margin-left: 2.5%; margin-top: 10px">关键词：</div>
+{#        <div id="keyword" class="keyword-area"></div>#}
+        <textarea id="keyword" class="form-control" id="deblock_udid" name="deblock_udid" rows="16" style="min-width: 95%; max-width: 95%; min-height: 50px; max-height: 60px; margin: 5px auto"></textarea>
+
+
+        <div style="margin-left: 2.5%; margin-top: 10px">摘要：</div>
+{#        <input type="text" id="pdigest" class="digest-area">#}
+        <textarea id="pdigest" class="form-control" id="deblock_udid" name="deblock_udid" rows="16" style="min-width: 95%; max-width: 95%; min-height: 400px; max-height: 450px; margin: 5px auto"></textarea>
+    </div>
+</div>
+
+
+
+
+
+<script src="/static/js/jquery-3.1.1.js"></script>
+<script src="/static/plugins/bootstrap/js/bootstrap.js"></script>
+
+<script>
+
+    $(function(){
+
+        //重置
+        $('#clear_text').click(function () {
+            $('#input_passage').val('');
+            //$('input:radio[name=handle_method]').attr('checked', false);
+            $("input").filter(":radio").removeAttr("checked");
+        });
+
+
+        //发生Ajax请求
+         $('#btnEditSave').click(function () {
+            let postDate = {};
+            $('#input_area').find('input, textarea').each(function () {
+
+                let v = $(this).val();
+                let n = $(this).attr('name');
+                if (n === 'handle_method'){
+                    if ($(this).prop('checked')) {
+                        postDate[n] = v;
+                    }
+                } else{
+                    postDate[n] = v;
+                }
+
+            });
+
+            $.ajax({
+                url:'/extract/',
+                type:'POST',
+                data:postDate,
+                success:function (arg) {
+                    var dict = JSON.parse(arg)
+                    if(dict.status){
+                        console.log(dict);
+                        {#createRow(postDate,dict.date)#}
+                        {#$('#addModal').modal('hide')#}
+                        $('#output_area').find('#keyword').val(dict.keyword);
+                        $('#output_area').find('#pdigest').val(dict.pdigest);
+                    }else{
+                        $('#errorMag').text(dict.message);
+                    }
+                }
+            })
+
+        })
+    })
+</script>
+
+</body>
+</html>
