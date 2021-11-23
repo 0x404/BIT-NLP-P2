@@ -91,7 +91,7 @@ def wordRank(text, windowLen = 3, limit = 5):
     :param limit: 前limit个关键词，默认为5（但limit大于全部词时，返回全部词）
     :return: 前limit个关键词，以[(score, word1), (score, word2), (score, word3)...]的形式返回
     """
-    stopWords = dataLoader.loadStopWords("/root/mysite/myapp/game/textrank/data/cn_stopwords.txt")  # 加载停用词
+    stopWords = dataLoader.loadStopWords("/root/github/BIT-NLP-P2/django_online/keyword_extraction/textrank/data/baidu_stopwords.txt")  # 加载停用词
     trie = Trie(stopWords)
 
     segRes = [word for word in jieba.cut(text)]

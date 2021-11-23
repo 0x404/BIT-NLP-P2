@@ -104,7 +104,7 @@ def sentenceRank(paragraph, limit = 3):
 
     for i in range(len(sentences)):
         sentences[i] = [word for word in jieba.cut(sentences[i])]
-    stopWords = dataLoader.loadStopWords("/root/mysite/myapp/game/textrank/data/cn_stopwords.txt")  # 加载停用词
+    stopWords = dataLoader.loadStopWords("/root/github/BIT-NLP-P2/django_online/keyword_extraction/textrank/data/baidu_stopwords.txt")  # 加载停用词
     trie = Trie(stopWords)
     newSent = []
     for i in range(len(sentences)):
