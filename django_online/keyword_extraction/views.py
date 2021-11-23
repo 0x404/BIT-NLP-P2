@@ -22,7 +22,7 @@ def extract(request):
 
         keyword, pdigest = "", ""
         for w in word3:
-            keyword += w[1] + " "
+            keyword += w[1] + "，"
         keyword = keyword[0 : len(keyword) - 1]
         for w in digest:
             pdigest += w[1] + " "
