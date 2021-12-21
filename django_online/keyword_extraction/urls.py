@@ -24,7 +24,7 @@ from django.urls import path, re_path
 from keyword_extraction import views
 
 urlpatterns = [
-    re_path('admin/', admin.site.urls),
+#    re_path('admin/', admin.site.urls),
 
     re_path(r'^$', views.index),
     re_path(r'^extract/', views.extract)

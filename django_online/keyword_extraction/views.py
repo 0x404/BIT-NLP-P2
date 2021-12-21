@@ -1,9 +1,7 @@
 import json
-
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from keyword_extraction.textrank import wordRank, sentenceRank
-
 
 def index(request):
 
@@ -12,7 +10,6 @@ def index(request):
 
 def extract(request):
     respone = {'status': True, 'message': None, 'keyword': None, 'pdigest': None}
-
     try:
         input_psg = request.POST.get('input_passage')
         handle_method = request.POST.get('handle_method')
