@@ -1,7 +1,7 @@
 '''
 author: 0x404
 Date: 2021-11-15 12:09:52
-LastEditTime: 2021-11-15 16:07:03
+LastEditTime: 2021-12-23 21:59:34
 Description: 
 '''
 import jieba
@@ -75,7 +75,7 @@ def calculateRank(trans, iteration = 1000):
         
         norm = math.sqrt(sum( x * x for x in rank))
         norm_n = math.sqrt(sum(x * x for x in rank_n))
-        if abs(norm - norm_n) < 0.01:   # 计算二范数 判断收敛
+        if abs(norm - norm_n) < 0.0001:   # 计算二范数 判断收敛
             break
     
     return rank
