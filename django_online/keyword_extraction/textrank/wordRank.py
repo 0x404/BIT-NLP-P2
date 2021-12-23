@@ -6,6 +6,7 @@ Description:
 '''
 import jieba
 import math
+import re
 from .util import dataLoader
 from .util.trieTree import Trie
 
@@ -93,7 +94,7 @@ def wordRank(text, windowLen = 3, limit = 5):
     """
     stopWords = dataLoader.loadStopWords("/root/github/BIT-NLP-P2/django_online/keyword_extraction/textrank/data/baidu_stopwords.txt")  # 加载停用词
     trie = Trie(stopWords)
-
+    text = re.sub('\W*', '', text)
     segRes = [word for word in jieba.cut(text)]
     stopRes = []
     for word in segRes:
