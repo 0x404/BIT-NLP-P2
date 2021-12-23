@@ -14,7 +14,7 @@ def extract(request):
         input_psg = request.POST.get('input_passage')
         handle_method = request.POST.get('handle_method')
 
-        word3 = wordRank.wordRank(input_psg, limit = 3)
+        word3 = wordRank.wordRank(input_psg, limit = 2)
         digest = sentenceRank.sentenceRank(input_psg, limit = 1)
 
         keyword, pdigest = "", ""
