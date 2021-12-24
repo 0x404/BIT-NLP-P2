@@ -2,7 +2,7 @@
 '''
 author: 0x404
 Date: 2021-11-15 14:07:42
-LastEditTime: 2021-12-23 20:50:01
+LastEditTime: 2021-12-24 11:02:49
 Description: 
 '''
 import re
@@ -63,8 +63,6 @@ def similarity(sent1, sent2, vecMap):
 
     vec1 = np.array(sent1)
     vec2 = np.array(sent2)
-    print (vec1)
-    print (vec2)
     f = np.sum(vec1 * vec2)
     p = np.sqrt(sum(vec1 ** 2))
     r = np.sqrt(sum(vec2 ** 2))
@@ -171,7 +169,7 @@ def sentenceRank(paragraph, limit = 3):
     
 if __name__ == "__main__":
     paragraph = '党的历史是最生动、最有说服力的教科书，我们党历来高度注重总结历史经验。党一步步走过来，很重要的一条就是不断总结经验、提高本领，不断提高应对风险、迎接挑战、化险为夷的能力水平。一百年来，党领导人民进行伟大奋斗，在进取中突破，于挫折中奋起，从总结中提高，积累了宝贵的历史经验。党的十九届六中全会审议通过的《中共中央关于党的百年奋斗重大成就和历史经验的决议》概括了具有根本性和长远指导意义的十条历史经验：坚持党的领导，坚持人民至上，坚持理论创新，坚持独立自主，坚持中国道路，坚持胸怀天下，坚持开拓创新，坚持敢于斗争，坚持统一战线，坚持自我革命。这十条历史经验是系统完整、相互贯通的有机整体，深刻揭示了党和人民事业不断成功的根本保证，深刻揭示了党始终立于不败之地的力量源泉，深刻揭示了党始终掌握历史主动的根本原因，深刻揭示了党永葆先进性和纯洁性、始终走在时代前列的根本途径，具有重大的历史意义和现实指导意义。'
-    print (sentenceRank(paragraph))
+    print (sentenceRank(paragraph, limit=1))
     # print (len(res))
     # file = open("data/vecMap.pkl", mode="rb")
     # res = pickle.load(file)
