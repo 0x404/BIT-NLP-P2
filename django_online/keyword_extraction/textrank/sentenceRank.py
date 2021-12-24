@@ -135,7 +135,7 @@ def sentenceRank(paragraph, limit = 3):
 
     for i in range(len(sentences)):
         sentences[i] = [word for word in jieba.cut(sentences[i])]
-    stopWords = dataLoader.loadStopWords("/root/github/BIT-NLP-P2/django_online/keyword_extraction/textrank/data/baidu_stopwords.txt")  # 加载停用词
+    stopWords = dataLoader.loadStopWords("keyword_extraction/textrank/data/baidu_stopwords.txt")  # 加载停用词
     trie = Trie(stopWords)
     newSent = []
     for i in range(len(sentences)):
@@ -151,7 +151,7 @@ def sentenceRank(paragraph, limit = 3):
             if word not in wordSet:
                 wordSet.append(word)
     
-    vecMap = dataLoader.loadWord2vec("/root/github/BIT-NLP-P2/django_online/keyword_extraction/textrank/data/sgns.weibo.word", wordSet)
+    vecMap = dataLoader.loadWord2vec("keyword_extraction/textrank/data/sgns.weibo.word", wordSet)
     
     trans = generateTrans(newSent, sent2Id, vecMap)
     rank = calculateRank(trans)
