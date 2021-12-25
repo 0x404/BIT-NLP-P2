@@ -2,12 +2,11 @@
 '''
 author: 0x404
 Date: 2021-11-15 14:07:42
-LastEditTime: 2021-12-24 11:02:49
+LastEditTime: 2021-12-25 12:45:11
 Description: 
 '''
 import re
 import jieba
-import pickle
 import math
 import numpy as np
 from util import dataLoader
