@@ -47,6 +47,7 @@ BIT自然语言理解初步大作业2
 * 清华新闻数据集来源：https://thunlp.oss-cn-qingdao.aliyuncs.com/THUCNews.zip
 * jieba(后续可以用作业1的库代替)
 * re
+* zipfile36
 
 
 
