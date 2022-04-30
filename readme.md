@@ -9,7 +9,6 @@ BIT自然语言理解初步大作业2
 
 * 本项目为web项目，项目已部署到云服务器，可通过网址http://www.0x404.tech 直接在线访问与使用本应用。
 * 建议使用google游览器或者edge游览器
-* 如无法访问请联系871206929@qq.com。
 * 本文档为本地部署教程。
 
 ## 项目本地运行
@@ -18,7 +17,7 @@ BIT自然语言理解初步大作业2
 
 
 ```shell
- #克隆github仓库到本地（提交截止后开放）
+ #克隆github仓库到本地
  git clone git@github.com:0x404/BIT-NLP-P2.git
  
  #进入Django项目目录下
